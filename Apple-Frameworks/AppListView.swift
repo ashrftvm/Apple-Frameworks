@@ -14,7 +14,10 @@ struct AppListView: View {
     ]
     var body: some View {
         LazyVGrid(columns:columns){
-            AppIndividualView(appName: "App Clips", appIcon: "app-clip")
+            ForEach(MockData.frameworks){ item in
+                AppIndividualView(appName: item.name, appIcon: item.imageName)
+            }
+            
         }
         
     }
