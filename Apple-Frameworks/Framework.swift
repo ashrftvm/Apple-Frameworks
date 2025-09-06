@@ -35,4 +35,5 @@ struct MockData {
             Framework(name: "SwiftUI", imageName: "swiftui", urlString: "https://developer.apple.com/xcode/swiftui/", description: "SwiftUI is Apple's declarative UI framework. It provides a modern, intuitive way to build user interfaces for all Apple platforms, allowing developers to create stunning apps with less code and a live preview of the UI."),
             Framework(name: "App Clips", imageName: "app-clip", urlString: "https://developer.apple.com/app-clips/", description: "App Clips are lightweight, mini versions of your app that can be quickly launched to complete a specific task. They are designed to be discovered at the moment they're needed, such as scanning a QR code or an NFC tag."),
         ]
+    static let sampleData: Framework = Framework(name: "Test", imageName: "test", urlString: "test", description: "something went wrong")
 }

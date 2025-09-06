@@ -31,6 +31,7 @@ struct AppListView: View {
 struct AppIndividualView: View {
     let framework: Framework
     @State var showDetail:Bool = false
+    @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
         VStack {
@@ -47,9 +48,10 @@ struct AppIndividualView: View {
         .padding()
         .onTapGesture {
             showDetail.toggle()
+            viewModel.selectedFramework = framework
         }
-        .sheet(isPresented: $showDetail){
-            AppDetailView(isPresented: $showDetail, framework: framework)
+        .sheet(isPresented: $viewModel.isShowingDetail){
+            AppDetailView(framework: viewModel.selectedFramework ?? MockData.sampleData, isShowingDetailView: $viewModel.isShowingDetail)
         }
     }
 }

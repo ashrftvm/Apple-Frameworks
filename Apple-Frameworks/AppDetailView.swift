@@ -8,38 +8,44 @@
 import SwiftUI
 
 struct AppDetailView: View {
-    @Binding var isPresented: Bool
     let framework: Framework
+    @Binding var isShowingDetailView: Bool
     
     var body: some View {
         VStack{
             HStack {
                 Spacer()
                 Button {
-                    isPresented = false // This will dismiss the sheet
+                    print("tapped")
+                    isShowingDetailView.toggle()
                 } label: {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: "xmark")
                         .foregroundColor(.secondary)
-                        .font(.title)
+                        .font(.title2)
+                        .imageScale(.large)
                 }
             }
-            .padding(.horizontal)
+            .padding()
             
             VStack(spacing: 30){
+                Spacer()
                 Image(framework.imageName)
                     .resizable()
                     .frame(width: 150, height: 150)
+                Text(framework.name)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 Text(framework.description)
+                    .font(.body)
+                Spacer()
                 Button(action: {
                     print("tapped")
                 }, label: {
                     Text("Learn More")
-                }).frame(width:280, height: 50).background(Color.gray).foregroundColor(.white).cornerRadius(10)
+                }).frame(width:280, height: 50).background(.tertiary).foregroundColor(.primary).font(.title2).cornerRadius(10)
             }
             .padding()
         }
-        
-        
         
     }
 }
