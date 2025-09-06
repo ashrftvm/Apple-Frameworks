@@ -10,6 +10,7 @@ import SwiftUI
 struct AppDetailView: View {
     let framework: Framework
     @Binding var isShowingDetailView: Bool
+    @State private var isShowingSafariView: Bool = false
     
     var body: some View {
         VStack{
@@ -37,14 +38,28 @@ struct AppDetailView: View {
                 Text(framework.description)
                     .font(.body)
                 Spacer()
-                Link("Learn More", destination: URL(string: framework.urlString)!)
-                    .frame(width: 280, height: 50)
-                    .background(.tertiary)
-                    .foregroundColor(.primary)
-                    .font(.title2)
-                    .cornerRadius(10)
+//                Link("Learn More", destination: URL(string: framework.urlString)!)
+//                    .frame(width: 280, height: 50)
+//                    .background(.tertiary)
+//                    .foregroundColor(.primary)
+//                    .font(.title2)
+//                    .cornerRadius(10)
+                Button(action: {
+                    isShowingSafariView.toggle()
+                }){
+                    Text("Learn More")
+                        .font(.title2)
+                        .frame(width: 280, height: 50)
+                        .foregroundStyle(.white)
+                        .background(.secondary)
+                        .cornerRadius(10)
+                        .padding()
+                }
             }
             .padding()
+            .fullScreenCover(isPresented: $isShowingSafariView, content: {
+                SafariView(url: URL(string: framework.urlString)!)
+            })
         }
         
     }
