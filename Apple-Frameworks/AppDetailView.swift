@@ -37,11 +37,12 @@ struct AppDetailView: View {
                 Text(framework.description)
                     .font(.body)
                 Spacer()
-                Button(action: {
-                    print("tapped")
-                }, label: {
-                    Text("Learn More")
-                }).frame(width:280, height: 50).background(.tertiary).foregroundColor(.primary).font(.title2).cornerRadius(10)
+                Link("Learn More", destination: URL(string: framework.urlString)!)
+                    .frame(width: 280, height: 50)
+                    .background(.tertiary)
+                    .foregroundColor(.primary)
+                    .font(.title2)
+                    .cornerRadius(10)
             }
             .padding()
         }
