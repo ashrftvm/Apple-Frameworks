@@ -16,7 +16,6 @@ struct AppDetailView: View {
             HStack {
                 Spacer()
                 Button {
-                    print("tapped")
                     isShowingDetailView.toggle()
                 } label: {
                     Image(systemName: "xmark")
