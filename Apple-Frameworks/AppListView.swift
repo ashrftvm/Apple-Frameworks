@@ -22,6 +22,7 @@ struct AppListView: View {
             }
             .navigationTitle("🍎 Frameworks")
         }
+        .accentColor(Color(.label))
     }
 }
 

@@ -36,14 +36,18 @@ struct AppDetailView: View {
                 Button(action: {
                     isShowingSafariView.toggle()
                 }){
-                    Text("Learn More")
-                        .font(.title2)
-                        .frame(width: 280, height: 50)
-                        .foregroundStyle(.white)
-                        .background(.secondary)
-                        .cornerRadius(10)
-                        .padding()
+//                    Text("Learn More")
+//                        .font(.title2)
+//                        .frame(width: 280, height: 50)
+//                        .foregroundStyle(.white)
+//                        .background(.secondary)
+//                        .cornerRadius(10)
+//                        .padding()
+                    Label("Learn More", systemImage: "book.fill")
                 }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .tint(.red)
             }
             .padding()
             .fullScreenCover(isPresented: $isShowingSafariView, content: {
