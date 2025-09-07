@@ -9,14 +9,9 @@ import SwiftUI
 
 final class FrameworkGridViewModel: ObservableObject {
     
-    var selectedFramework: Framework?{
-        didSet{
-            isShowingDetail.toggle()
-        }
-    }
     let columns: [GridItem] = [GridItem(.flexible()),
                                GridItem(.flexible()),
                                GridItem(.flexible()),
     ]
-    @Published var isShowingDetail: Bool = false
+
 }

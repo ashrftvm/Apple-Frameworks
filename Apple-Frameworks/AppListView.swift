@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct AppListView: View {
-    @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
                 List{
                     ForEach(MockData.frameworks){ item in
-                        NavigationLink(destination: AppDetailView(framework: item, isShowingDetailView: $viewModel.isShowingDetail)){
+                        NavigationLink(destination: AppDetailView(framework: item)){
                             AppIndividualView(framework: item)
                         }
                         
                     }
             }
             .navigationTitle("🍎 Frameworks")
+            .navigationDestination(for: Framework.self, destination: { framework in
+                AppIndividualView(framework: framework)
+            })
         }
         .accentColor(Color(.label))
     }
@@ -30,7 +32,6 @@ struct AppListView: View {
 struct AppIndividualView: View {
     let framework: Framework
     @State var showDetail:Bool = false
-    @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
         HStack {
