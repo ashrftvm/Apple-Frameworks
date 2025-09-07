@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct AppListView: View {
-    let columns: [GridItem] = [GridItem(.flexible()),
-                               GridItem(.flexible()),
-                               GridItem(.flexible()),
-    ]
+    @StateObject var viewModel = FrameworkGridViewModel()
+    
     var body: some View {
         NavigationView{
             ScrollView{
-                LazyVGrid(columns:columns){
+                LazyVGrid(columns:viewModel.columns){
                     ForEach(MockData.frameworks){ item in
                         AppIndividualView(framework: item)
                     }

@@ -14,18 +14,7 @@ struct AppDetailView: View {
     
     var body: some View {
         VStack{
-            HStack {
-                Spacer()
-                Button {
-                    isShowingDetailView.toggle()
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.secondary)
-                        .font(.title2)
-                        .imageScale(.large)
-                }
-            }
-            .padding()
+            XDismissViewButton(isShowingDetailView: $isShowingDetailView)
             
             VStack(spacing: 30){
                 Spacer()
