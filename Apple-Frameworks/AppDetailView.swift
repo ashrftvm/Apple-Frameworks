@@ -14,7 +14,7 @@ struct AppDetailView: View {
     
     var body: some View {
         VStack{
-            XDismissViewButton(isShowingDetailView: $isShowingDetailView)
+//            XDismissViewButton(isShowingDetailView: $isShowingDetailView)
             
             VStack(spacing: 30){
                 Spacer()

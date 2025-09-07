@@ -12,13 +12,13 @@ struct AppListView: View {
     
     var body: some View {
         NavigationView{
-            ScrollView{
-                LazyVGrid(columns:viewModel.columns){
+                List{
                     ForEach(MockData.frameworks){ item in
-                        AppIndividualView(framework: item)
+                        NavigationLink(destination: AppDetailView(framework: item, isShowingDetailView: $viewModel.isShowingDetail)){
+                            AppIndividualView(framework: item)
+                        }
+                        
                     }
-                    
-                }
             }
             .navigationTitle("🍎 Frameworks")
         }
@@ -32,24 +32,17 @@ struct AppIndividualView: View {
     @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
-        VStack {
+        HStack {
             Image(framework.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
+                .frame(width: 80, height: 80)
             Text(framework.name)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
         }
-        .padding()
-        .onTapGesture {
-            showDetail.toggle()
-            viewModel.selectedFramework = framework
-        }
-        .sheet(isPresented: $viewModel.isShowingDetail){
-            AppDetailView(framework: viewModel.selectedFramework ?? MockData.sampleData, isShowingDetailView: $viewModel.isShowingDetail)
-        }
+//        .padding()
     }
 }

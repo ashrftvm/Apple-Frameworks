@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FrameworkGridView: View {
+struct FrameworkGridViewListView: View {
     var body: some View {
         ZStack{
             AppListView()
@@ -16,5 +16,5 @@ struct FrameworkGridView: View {
 }
 
 #Preview {
-    FrameworkGridView()
+    FrameworkGridViewListView()
 }
